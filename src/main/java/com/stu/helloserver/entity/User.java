@@ -1,43 +1,23 @@
 package com.stu.helloserver.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
+@TableName("sys_user") // 绑定数据库表名
 public class User {
+    @TableId(type = IdType.AUTO) // 主键自增
     private Long id;
-    private String name;
-    private Integer age;
+    private String username;
+    private String password;
 
-    // 无参构造方法
-    public User() {
-    }
+    // 请使用 IDE (如IDEA) 右键生成 Getter 和 Setter
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    // 全参构造方法（带所有属性）
-    public User(Long id, String name, Integer age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
+    public String getUsername() { return username; }
+    public void setUsername(String username) { this.username = username; }
 
-    // Getter 和 Setter 方法
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 }

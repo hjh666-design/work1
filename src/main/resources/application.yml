@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: hello-server
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/lab_db
+    username: postgres
+    password: xx889900890

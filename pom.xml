@@ -5,15 +5,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <!-- 修正：版本号改为稳定版本，原“4.0.3”不存在 -->
-        <version>4.0.3</version>
+        <version>4.0.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.stu</groupId>
-    <artifactId>hello-server</artifactId>
+    <artifactId>helloserver</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>hello-server</name>
-    <description>hello-server</description>
+    <name>helloserver</name>
+    <description>helloserver</description>
     <url/>
     <licenses>
         <license/>
@@ -31,16 +30,32 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
-        <!-- 基础启动器，可保留 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
-        <!-- 新增：Web启动器（必需！提供@RestController、@GetMapping等注解支持） -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot4-starter</artifactId>
+            <version>3.5.13</version>  <!-- 建议使用最新版本 -->
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>

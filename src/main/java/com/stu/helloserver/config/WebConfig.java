@@ -1,21 +1,24 @@
-package com.stu.helloserver.config; // 注意包路径要与您的项目一致
+package com.stu.helloserver.config;
 
-import com.stu.helloserver.interceptor.AuthInterceptor; // 导入上面创建的拦截器
+import com.stu.helloserver.interceptor.AuthInterceptor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-@Configuration // 核心注解，表明这是一个配置类
+@Configuration
 public class WebConfig implements WebMvcConfigurer {
+
+    @Autowired
+    private AuthInterceptor authInterceptor;   // 注入 Spring 管理的 Bean
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new AuthInterceptor()) // 1. 注册自定义拦截器
-                .addPathPatterns("/api/**") // 2. 指定拦截路径：所有以`/api/`开头的请求
-                .excludePathPatterns( // 3. 指定排除路径（放行）：
-                        "/api/users/login",  // 放行登录接口
-                        "/api/users"   // 放行用户注册（新增）接口
-
+        registry.addInterceptor(authInterceptor)
+                .addPathPatterns("/api/**")          // 只拦截 /api/ 下的请求
+                .excludePathPatterns(
+                        "/api/users/login",          // 登录接口放行
+                        "/api/users"                 // 注册接口放行（POST）
                 );
     }
 }
