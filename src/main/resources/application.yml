@@ -3,6 +3,12 @@ spring:
     name: hello-server
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/lab_db
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: xx889900890
+  mybatis-plus:
+    configuration:
+      map-underscore-to-camel-case: true  # 启用下划线转驼峰命名
+    global-config:
+      db-config:
+        id-type: auto  # 主键自增

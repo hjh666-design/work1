@@ -13,8 +13,8 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    // 1. 新增用户(注册)
-    @PostMapping
+    // 1. 新增用户(注册) - 修正：加上 /register
+    @PostMapping("/register")
     public Result<String> register(@RequestBody UserDTO userDTO) {
         return userService.register(userDTO);
     }

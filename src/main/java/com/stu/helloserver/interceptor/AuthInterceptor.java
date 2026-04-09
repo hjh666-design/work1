@@ -1,7 +1,7 @@
 package com.stu.helloserver.interceptor;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -18,10 +18,10 @@ public class AuthInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         String method = request.getMethod();
 
-        // 放行注册和登录接口（双重保险）
-        if (("/api/users".equals(uri) && "POST".equalsIgnoreCase(method)) ||
-                ("/api/users/login".equals(uri) && "POST".equalsIgnoreCase(method))) {
-            return true;
+        // 核心修改：放行注册接口（/api/users/register POST）和登录接口
+        if (uri.contains("/api/users/register") && "POST".equalsIgnoreCase(method) ||
+                uri.contains("/api/users/login") && "POST".equalsIgnoreCase(method)) {
+            return true; // 直接放行，不校验Token
         }
 
         // 获取并验证 Token
