@@ -18,9 +18,11 @@ public class AuthInterceptor implements HandlerInterceptor {
         String uri = request.getRequestURI();
         String method = request.getMethod();
 
-        // 核心修改：放行注册接口（/api/users/register POST）和登录接口
+        // 核心修改：放行注册接口（/api/users/register POST）、登录接口、分页查询接口和根据ID查询接口
         if (uri.contains("/api/users/register") && "POST".equalsIgnoreCase(method) ||
-                uri.contains("/api/users/login") && "POST".equalsIgnoreCase(method)) {
+                uri.contains("/api/users/login") && "POST".equalsIgnoreCase(method) ||
+                uri.contains("/api/users/page") ||
+                uri.matches("/api/users/\\d+")) {
             return true; // 直接放行，不校验Token
         }
 

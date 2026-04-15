@@ -12,3 +12,5 @@ spring:
     global-config:
       db-config:
         id-type: auto  # 主键自增
+server:
+  port: 8080
