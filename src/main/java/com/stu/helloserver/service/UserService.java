@@ -2,6 +2,8 @@ package com.stu.helloserver.service;
 
 import com.stu.helloserver.common.Result;
 import com.stu.helloserver.dto.UserDTO;
+import com.stu.helloserver.entity.UserInfo;
+import com.stu.helloserver.vo.UserDetailVO;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 public interface UserService {
@@ -9,4 +11,7 @@ public interface UserService {
     Result<String> login(UserDTO userDTO);
     Result<String> getUserById(Long id);
     Result<Object> getUserPage(Integer pageNum, Integer pageSize);
+    Result<UserDetailVO> getUserDetail(Long userId);
+    Result<String> updateUserInfo(UserInfo userInfo);
+    Result<String> deleteUser(Long userId);
 }
