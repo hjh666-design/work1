@@ -26,3 +26,8 @@ logging:
     com.stu.helloserver: DEBUG
     com.baomidou.mybatisplus: DEBUG
     org.apache.ibatis: DEBUG
+
+security:
+  jwt:
+    secret: demo-jwt-secret-key-for-spring-security-2026
+    expiration-millis: 7200000

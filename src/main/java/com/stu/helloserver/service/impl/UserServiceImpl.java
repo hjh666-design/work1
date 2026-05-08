@@ -7,6 +7,7 @@ import com.stu.helloserver.common.ResultCode;
 import com.stu.helloserver.dto.UserDTO;
 import com.stu.helloserver.entity.User;
 import com.stu.helloserver.entity.UserInfo;
+import com.stu.helloserver.config.JwtUtil;
 import com.stu.helloserver.mapper.UserInfoMapper;
 import com.stu.helloserver.mapper.UserMapper;
 import com.stu.helloserver.service.UserService;
@@ -34,6 +35,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private StringRedisTemplate redisTemplate;
+
+    @Autowired
+    private JwtUtil jwtUtil;
 
     @Override
     public Result<String> register(UserDTO userDTO) {
@@ -67,8 +71,8 @@ public class UserServiceImpl implements UserService {
             return Result.error(ResultCode.PASSWORD_ERROR);
         }
 
-        String token = "Bearer " + UUID.randomUUID().toString();
-        return Result.success(token);
+        String jwt = jwtUtil.generateToken(userDTO.getUsername());
+        return Result.success(jwt);
     }
 
     @Override
